@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yıldız City 1001 Apt. - Aidat Çizelgesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- html2canvas for 1-click PNG export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px;
+    }
+
+    /* Top Control Bar */
+    .toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+      margin-bottom: 20px;
+    }
+    .toolbar-info {
+      font-size: 13px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toolbar-info strong {
+      color: #0f172a;
+    }
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: #1e40af;
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    .btn-secondary {
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* Vertical Sheet (Canvas) */
+    .sheet-wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      padding: 32px 28px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    /* Header */
+    .sheet-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .apt-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1e3a8a;
+      letter-spacing: 0.5px;
+      outline: none;
+    }
+    .apt-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2563eb;
+      margin-top: 4px;
+      outline: none;
+    }
+
+    /* Main Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 6px;
+      vertical-align: middle;
+      outline: none;
+    }
+    th {
+      background-color: #2563eb;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 10px;
+      text-align: center;
+      line-height: 1.25;
+      padding: 8px 4px;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    tbody tr:hover {
+      background-color: #eff6ff;
+    }
+
+    .col-center { text-align: center; }
+    .col-left { text-align: left; font-weight: 500; }
+    .col-right { text-align: right; }
+    .col-bold { font-weight: 700; }
+    .text-red { color: #dc2626; font-weight: 700; }
+
+    /* Editable cell outline on focus */
+    td[contenteditable="true"]:focus {
+      background-color: #fef3c7 !important;
+      box-shadow: inset 0 0 0 2px #d97706;
+    }
+
+    /* Bottom Summary Section */
+    .summary-section {
+      margin-top: 24px;
+      width: 48%;
+    }
+    .summary-table th {
+      background-color: #475569;
+      font-size: 11px;
+      text-align: left;
+      padding: 6px 8px;
+    }
+    .summary-table td {
+      font-size: 11px;
+      padding: 5px 8px;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .toolbar {
+        display: none;
+      }
+      .sheet-wrapper {
+        box-shadow: none;
+        padding: 10px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Üst Araç Çubuğu -->
+  <div class="toolbar">
+    <div class="toolbar-info">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+      <span>Tablodaki herhangi bir <strong>ismin veya sayının üzerine tıklayarak</strong> hemen düzenleyebilirsiniz.</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Yazdır / PDF
+      </button>
+      <button class="btn btn-primary" id="btn-download" onclick="exportToImage()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        Resim Olarak İndir (PNG)
+      </button>
+    </div>
+  </div>
+
+  <!-- Dikey Sayfa / Çizelge Alanı -->
+  <div class="sheet-wrapper" id="sheet-content">
+    <div class="sheet-header">
+      <div class="apt-title" contenteditable="true">YILDIZ CİTY 1001 APT.</div>
+      <div class="apt-subtitle" contenteditable="true">AĞUSTOS AYI AİDAT ÇİZELGESİ</div>
+    </div>
+
+    <!-- Aidat Tablosu -->
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 4%;">DAİRE<br>NO</th>
+          <th style="width: 22%;">KAT SAHİBİ</th>
+          <th style="width: 9%;">TEMİZLİK<br>GÖREVLİSİ</th>
+          <th style="width: 9%;">1NL ELEKTRİK<br>ABONELİĞİ</th>
+          <th style="width: 9%;">2NL ELEKTRİK<br>ABONELİĞİ</th>
+          <th style="width: 9%;">3NL ELEKTRİK<br>ABONELİĞİ</th>
+          <th style="width: 9%;">ASANSÖR<br>AYLIK BAKIM</th>
+          <th style="width: 9%;">KASADA<br>KALAN</th>
+          <th style="width: 9%;">GENEL<br>TOPLAM</th>
+          <th style="width: 8%;">ESKİ<br>BORÇ</th>
+          <th style="width: 10%;">ESKİ BORÇ<br>TOPLAM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-center" contenteditable="true">1</td><td class="col-left" contenteditable="true">CEYDA NUR HAYTA</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">2</td><td class="col-left" contenteditable="true">RAMAZAN YILDIZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">3</td><td class="col-left" contenteditable="true">TEMUR YILDIZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">4</td><td class="col-left" contenteditable="true">DİLDEN DALKILIÇ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">5</td><td class="col-left" contenteditable="true">FATİH ALAN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">6</td><td class="col-left" contenteditable="true">GÜLDEN ERDOĞAN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">7</td><td class="col-left" contenteditable="true">EMRE SUNGUR</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">8</td><td class="col-left" contenteditable="true">OSMAN S. ÇÖPLÜ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">9</td><td class="col-left" contenteditable="true">AZİZ AY</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">10</td><td class="col-left" contenteditable="true">HARUN AKBALIK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">11</td><td class="col-left" contenteditable="true">BEKİR YÖNDEMLİ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">12</td><td class="col-left" contenteditable="true">ENVER ÇAKMAK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">13</td><td class="col-left" contenteditable="true">MEHMET AYDIN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">14</td><td class="col-left" contenteditable="true">BERAT ATABAY</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">15</td><td class="col-left" contenteditable="true">RAFİ KÜÇÜK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">16</td><td class="col-left" contenteditable="true">SERGEN ALMA</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">17</td><td class="col-left" contenteditable="true">ZÜBEYİR ÖNAL</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">18</td><td class="col-left" contenteditable="true">OĞUZHAN ÖZTÜRK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">19</td><td class="col-left" contenteditable="true">YUSUF AYKUT</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">20</td><td class="col-left" contenteditable="true">MAHİR ORHAN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">21</td><td class="col-left" contenteditable="true">BAYRAM ALATAŞ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">22</td><td class="col-left" contenteditable="true">PERİHAN KURT</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">23</td><td class="col-left" contenteditable="true">ABDULLAH EMEN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">24</td><td class="col-left" contenteditable="true">ZÜLFÜ ERENER</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">25</td><td class="col-left" contenteditable="true">İZZET SELÇUK SAVAŞ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">26</td><td class="col-left" contenteditable="true">HATİCE ŞÖHRET SÜRER</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">27</td><td class="col-left" contenteditable="true">MELEK DİNLAMAZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">28</td><td class="col-left" contenteditable="true">MURAT ŞEKER</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">1.600,00 ₺</td></tr>
+        <tr><td class="col-center" contenteditable="true">29</td><td class="col-left" contenteditable="true">EKREM ANIL</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">30</td><td class="col-left" contenteditable="true">İBRAHİM KANHAN</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">31</td><td class="col-left" contenteditable="true">EŞREF TORU</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">32</td><td class="col-left" contenteditable="true">YUSUF ÇAKMAK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">33</td><td class="col-left" contenteditable="true">NUR GÜNGÖR</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">34</td><td class="col-left" contenteditable="true">KEMAL ERKEK</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">35</td><td class="col-left" contenteditable="true">MEHMET ALİ GÜL</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">1.600,00 ₺</td></tr>
+        <tr><td class="col-center" contenteditable="true">36</td><td class="col-left" contenteditable="true">DİLEK KARALI</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">800,00 ₺</td><td class="col-right text-red" contenteditable="true">1.600,00 ₺</td></tr>
+        <tr><td class="col-center" contenteditable="true">37</td><td class="col-left" contenteditable="true">UFUK CAN RADAR</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">38</td><td class="col-left" contenteditable="true">MAHMUT AKİZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">39</td><td class="col-left" contenteditable="true">RAMAZAN YILDIZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">40</td><td class="col-left" contenteditable="true">ALAA MATERMAVI</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">41</td><td class="col-left" contenteditable="true">RAMAZAN YILDIZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">42</td><td class="col-left" contenteditable="true">EYÜPCAN DALDÖKMEZ</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+        <tr><td class="col-center" contenteditable="true">44</td><td class="col-left" contenteditable="true">SERDAR ÇAYIR</td><td class="col-right" contenteditable="true">255,81 ₺</td><td class="col-right" contenteditable="true">93,60 ₺</td><td class="col-right" contenteditable="true">56,40 ₺</td><td class="col-right" contenteditable="true">70,12 ₺</td><td class="col-right" contenteditable="true">148,49 ₺</td><td class="col-right" contenteditable="true">175,58 ₺</td><td class="col-right col-bold" contenteditable="true">800,00 ₺</td><td class="col-center" contenteditable="true">-</td><td class="col-center" contenteditable="true">-</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Alt Gider Dağılımı Özeti -->
+    <div class="summary-section">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th style="width: 65%;">GİDER KALEMİ</th>
+            <th style="width: 35%; text-align: right;">TUTAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td contenteditable="true">ASANSÖR ELEKTRİK</td><td class="col-right col-bold" contenteditable="true">4.025,00 ₺</td></tr>
+          <tr><td contenteditable="true">HİDRAFOR ELEKTRİK</td><td class="col-right col-bold" contenteditable="true">2.425,00 ₺</td></tr>
+          <tr><td contenteditable="true">ORTAK K. ELEKTRİK</td><td class="col-right col-bold" contenteditable="true">3.015,00 ₺</td></tr>
+          <tr><td contenteditable="true">TEMİZLİK GÖREVLİSİ AYLIK 30G.</td><td class="col-right col-bold" contenteditable="true">11.000,00 ₺</td></tr>
+          <tr><td contenteditable="true">KASADA KALACAK TUTAR</td><td class="col-right col-bold" contenteditable="true">7.549,94 ₺</td></tr>
+          <tr><td contenteditable="true">ASANSÖR BAKIM ÜCRETİ</td><td class="col-right col-bold" contenteditable="true">6.000,00 ₺</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Tek tıkla yüksek çözünürlüklü PNG resim olarak indirme fonksiyonu
+    function exportToImage() {
+      const btn = document.getElementById('btn-download');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Oluşturuluyor...';
+      btn.disabled = true;
+
+      const element = document.getElementById('sheet-content');
+
+      html2canvas(element, {
+        scale: 2.5, // Yüksek çözünürlüklü HD netlik
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Yildiz_City_1001_Aidat_Cizelgesi.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }).catch(err => {
+        console.error(err);
+        alert('Görsel oluşturulurken bir hata oluştu.');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      });
+    }
+  </script>
+</body>
+</html>
